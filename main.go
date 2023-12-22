@@ -256,7 +256,7 @@ func setup() {
 			continue
 		}
 
-		fmt.Printf("Uploading \033[1;33m%-s\033[0m objects\n", byteFormat(float64(objectSize)))
+		fmt.Printf("Uploading \033[1;35m%-s\033[0m objects\n", byteFormat(float64(objectSize)))
 
 		// create a progress bar
 		bar := progressbar.NewOptions(threadsMax-1, progressbar.OptionSetRenderBlankState(true))
@@ -350,8 +350,13 @@ func runBenchmark() {
 		w := csv.NewWriter(b)
 		_ = w.WriteAll(csvRecords)
 
+		key := "results/" + csvResults
 		// create the s3 key based on the prefix argument and instance type
-		key := "results/" + csvResults + "-" + instanceType
+		if instanceType != "" {
+			key += "-" + instanceType
+		} 
+		dt := time.Now()
+		key += dt.Format("01-02-2006-150405") + ".csv"		
 
 		// do the PutObject request
 		putReq := s3Client.PutObjectRequest(&s3.PutObjectInput{
@@ -367,7 +372,7 @@ func runBenchmark() {
 			panic("Failed to put object: " + err.Error())
 		}
 
-		fmt.Printf("CSV results uploaded to \033[1;33ms3://%s/%s\033[0m\n", bucketName, key)
+		fmt.Printf("CSV results uploaded to \033[1;35ms3://%s/%s\033[0m\n", bucketName, key)
 	}
 }
 
@@ -545,7 +550,7 @@ func printHeader(objectSize uint64) {
 	}
 
 	// print the table header
-	fmt.Printf("Download performance with \033[1;33m%-s\033[0m objects%s\n", byteFormat(float64(objectSize)), instanceTypeString)
+	fmt.Printf("Download performance with \033[1;35m%-s\033[0m objects%s\n", byteFormat(float64(objectSize)), instanceTypeString)
 	fmt.Println("                           +-------------------------------------------------------------------------------------------------+")
 	fmt.Println("                           |            Time to First Byte (ms)             |            Time to Last Byte (ms)              |")
 	fmt.Println("+---------+----------------+------------------------------------------------+------------------------------------------------+")
