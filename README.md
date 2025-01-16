@@ -15,19 +15,19 @@ With this tool you can measure S3's performance from any location, using differe
 
 #### macOS
 ```
-curl -OL https://github.com/dvassallo/s3-benchmark/raw/master/build/darwin-amd64/s3-benchmark
+curl -OL https://github.com/zextras/s3-benchmark/raw/master/build/darwin-amd64/s3-benchmark
 ```
 
 #### Linux 64-bit x86
 
 ```
-curl -OL https://github.com/dvassallo/s3-benchmark/raw/master/build/linux-amd64/s3-benchmark
+curl -OL https://github.com/zextras/s3-benchmark/raw/master/build/linux-amd64/s3-benchmark
 ```
 
 #### Linux 64-bit ARM
 
 ```
-curl -OL https://github.com/dvassallo/s3-benchmark/raw/master/build/linux-arm64/s3-benchmark
+curl -OL https://github.com/zextras/s3-benchmark/raw/master/build/linux-arm64/s3-benchmark
 ```
 
 ### Credentials
@@ -52,7 +52,7 @@ Or run the full test (takes a few hours):
 ./s3-benchmark -full
 ```
 
-See [this](https://github.com/dvassallo/s3-benchmark/blob/master/main.go#L123-L134) for all the other options.
+See [this](https://github.com/zextras/s3-benchmark/blob/master/main.go#L123-L134) for all the other options.
 
 ### Build
 
@@ -265,8 +265,7 @@ Unlike the first byte latency, the time to last byte obviously follows the objec
 
 ![Time to Last Byte Latency](/screenshots/ec2_s3_perf_ttlb.png?raw=true)
 
-If you want to analyze the data further, you can [download the spreadsheet](/Analysis%20of%20S3%20Performance%20from%20EC2.xlsx?raw=true) with all the raw data and the interactive features shown in the screenshots. Here's a [45 second demo](https://www.youtube.com/watch?v=f5CacEcWC9s) of what you can do with it.
-
+If you want to analyze the data further, you can [download the spreadsheet](/Analysis%20of%20S3%20Performance%20from%20EC2.xlsx?raw=true) with all the raw data and the interactive features shown in the screenshots.
 ## License
 
 This project is released under the [MIT License](LICENSE).
